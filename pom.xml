@@ -41,6 +41,42 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.15.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+
+<!--				<configuration> &lt;!&ndash; consumir wsdl x url &ndash;&gt;-->
+<!--					<schemaLanguage>WSDL</schemaLanguage>-->
+<!--					<generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
+<!--					<generatePackage>com.soap.wsdl</generatePackage>-->
+<!--					<schemas>-->
+<!--						<schema>-->
+<!--							<url>http://www.dneonline.com/calculator.asmx?WSDL</url>-->
+<!--						</schema>-->
+<!--					</schemas>-->
+<!--				</configuration>-->
+
+				<configuration> <!--consumir wsdl x archivo -->
+					<schemaLanguage>WSDL</schemaLanguage>
+					<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
+					<schemas>
+						<schemaFiles>CalculatorApi.wsdl</schemaFiles>
+						<packageName>com.soap.wsdl</packageName>
+						<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					</schemas>
+				</configuration>
+				
+			</plugin>
+
 		</plugins>
 	</build>
 
