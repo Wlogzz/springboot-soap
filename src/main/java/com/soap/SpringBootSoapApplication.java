@@ -12,17 +12,17 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringBootSoapApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootSoapApplication.class);
+//    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootSoapApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootSoapApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner init(SoapClient soapClient){
-        return args -> {
-            AddResponse addResponse = soapClient.getAddResponse(2, 2);
-            LOGGER.info("El resultado de los números {} y {} es: {}", 2, 2, addResponse.getAddResult());
-        };
-    }
+//    @Bean
+//    CommandLineRunner init(SoapClient soapClient){
+//        return args -> {
+//            AddResponse addResponse = soapClient.getAddResponse(2, 2);
+//            LOGGER.info("El resultado de los números {} y {} es: {}", 2, 2, addResponse.getAddResult());
+//        };
+//    }
 }
