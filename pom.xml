@@ -23,6 +23,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
@@ -43,9 +48,10 @@
 			</plugin>
 
 			<plugin>
+				<!-- https://mvnrepository.com/artifact/org.jvnet.jaxb2.maven2/maven-jaxb2-plugin -->
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>0.15.1</version>
+				<version>0.14.0</version>
 				<executions>
 					<execution>
 						<goals>
@@ -54,27 +60,28 @@
 					</execution>
 				</executions>
 
-<!--				<configuration> &lt;!&ndash; consumir wsdl x url &ndash;&gt;-->
-<!--					<schemaLanguage>WSDL</schemaLanguage>-->
-<!--					<generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
-<!--					<generatePackage>com.soap.wsdl</generatePackage>-->
-<!--					<schemas>-->
-<!--						<schema>-->
-<!--							<url>http://www.dneonline.com/calculator.asmx?WSDL</url>-->
-<!--						</schema>-->
-<!--					</schemas>-->
-<!--				</configuration>-->
-
-				<configuration> <!--consumir wsdl x archivo -->
+				<!-- consumir wsdl x url -->
+				<configuration>
 					<schemaLanguage>WSDL</schemaLanguage>
-					<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
+					<generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+					<generatePackage>com.soap.wsdl</generatePackage>
 					<schemas>
-						<schemaFiles>CalculatorApi.wsdl</schemaFiles>
-						<packageName>com.soap.wsdl</packageName>
-						<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+						<schema>
+							<url>http://www.dneonline.com/calculator.asmx?WSDL</url>
+						</schema>
 					</schemas>
 				</configuration>
-				
+
+				<!--consumir wsdl x archivo -->
+<!--				<configuration>-->
+<!--					<schemaLanguage>WSDL</schemaLanguage>-->
+<!--					<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>-->
+<!--					<schemas>-->
+<!--						<schemaFiles>CalculatorApi.wsdl</schemaFiles>-->
+<!--						<packageName>com.soap.wsdl</packageName>-->
+<!--						<outputDirectory>${project.basedir}/src/main/java</outputDirectory>-->
+<!--					</schemas>-->
+<!--				</configuration>-->
 			</plugin>
 
 		</plugins>
