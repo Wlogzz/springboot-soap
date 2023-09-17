@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class SoapController {
 
@@ -16,32 +19,48 @@ public class SoapController {
 
     @PostMapping("/sumar")
     public ResponseEntity<?> add(@RequestParam int numberA, @RequestParam int numberB){
+
+        Map<String, Integer> response = new HashMap<>();
+
         AddResponse addResponse = soapClient.getAddResponse(numberA, numberB);
 
-        return ResponseEntity.ok(addResponse.getAddResult());
+        response.put("Resultado suma", addResponse.getAddResult());
+        return ResponseEntity.ok().body(response);
     }
 
 
     @PostMapping("/restar")
     public ResponseEntity<?> subtract(@RequestParam int numberA, @RequestParam int numberB){
+
+        Map<String, Integer> response = new HashMap<>();
+
         SubtractResponse subtractResponse = soapClient.getSubtractResponse(numberA, numberB);
 
-        return ResponseEntity.ok(subtractResponse.getSubtractResult());
+        response.put("Resultado resta", subtractResponse.getSubtractResult());
+        return ResponseEntity.ok().body(response);
     }
 
 
     @PostMapping("/multiplicar")
     public ResponseEntity<?> multiply(@RequestParam int numberA, @RequestParam int numberB){
+
+        Map<String, Integer> response = new HashMap<>();
+
         MultiplyResponse multiplyResponse = soapClient.getMultiplyResponse(numberA, numberB);
 
-        return ResponseEntity.ok(multiplyResponse.getMultiplyResult());
+        response.put("Resultado multiplicación", multiplyResponse.getMultiplyResult());
+        return ResponseEntity.ok().body(response);
     }
 
 
     @PostMapping("/dividir")
     public ResponseEntity<?> divide(@RequestParam int numberA, @RequestParam int numberB){
+
+        Map<String, Integer> response = new HashMap<>();
+
         DivideResponse divideResponse = soapClient.getDivideResponse(numberA, numberB);
 
-        return ResponseEntity.ok(divideResponse.getDivideResult());
+        response.put("Resultado división", divideResponse.getDivideResult());
+        return ResponseEntity.ok().body(response);
     }
 }
