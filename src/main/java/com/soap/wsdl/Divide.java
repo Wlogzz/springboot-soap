@@ -49,7 +49,7 @@ public class Divide {
      * Obtiene el valor de la propiedad intA.
      * 
      */
-    public int getIntA() {
+    public int getIntA(int numberA) {
         return intA;
     }
 
@@ -65,7 +65,7 @@ public class Divide {
      * Obtiene el valor de la propiedad intB.
      * 
      */
-    public int getIntB() {
+    public int getIntB(int numberB) {
         return intB;
     }
 

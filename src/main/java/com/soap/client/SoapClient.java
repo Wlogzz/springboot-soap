@@ -67,4 +67,24 @@ public class SoapClient extends WebServiceGatewaySupport {
         return multiplyResponse;
     }
 
+
+    /**
+     * Método para dividir dos números enteros
+     * @param numberA
+     * @param numberB
+     * @return divideResponse
+     */
+    public DivideResponse getDivideResponse(int numberA, int numberB){
+        Divide divideRequest = new Divide();
+        divideRequest.getIntA(numberA);
+        divideRequest.getIntB(numberB);
+
+        SoapActionCallback soapActionCallback = new SoapActionCallback("http://tempuri.org/Divide");
+
+        DivideResponse divideResponse = (DivideResponse) getWebServiceTemplate().marshalSendAndReceive("http://www" +
+                ".dneonline.com/calculator.asmx", divideRequest, soapActionCallback);
+
+        return divideResponse;
+    }
+
 }
