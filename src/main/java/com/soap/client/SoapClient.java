@@ -76,8 +76,8 @@ public class SoapClient extends WebServiceGatewaySupport {
      */
     public DivideResponse getDivideResponse(int numberA, int numberB){
         Divide divideRequest = new Divide();
-        divideRequest.getIntA(numberA);
-        divideRequest.getIntB(numberB);
+        divideRequest.setIntA(numberA);
+        divideRequest.setIntB(numberB);
 
         SoapActionCallback soapActionCallback = new SoapActionCallback("http://tempuri.org/Divide");
 
